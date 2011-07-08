@@ -1,0 +1,50 @@
+---
+---
+<!DOCTYPE html> 
+<html dir="ltr" lang="en-US"> 
+<head> 
+	<meta charset="utf-8" />
+	 
+	<title>photo </title>
+</head>
+
+<body>
+
+  <section>
+
+    <!-- I cannot iterate off of paginator.posts ... wa waaah -->
+  	{% for post in site.posts %}
+
+      <article>
+        <header>
+          <h2>
+            <a href="{{ post.url }}">{{ post.title }}</a>
+          </h2>
+          <time>{{ post.date | date_to_string }}</time>
+        </header>
+
+        <div>{{ post.content }}</div>
+      </article>
+
+  	{% endfor %}
+
+    <nav class="pagination">
+      {% if paginator.next_page %}
+        <div class="prev">
+          <a href="/page{{ paginator.next_page }}/">&larr; Past</a>
+        </div>
+      {% endif %}
+
+      {% if paginator.previous_page %}
+        <div class="next">
+          <a href="{% if paginator.previous_page == 1 %}/{% else %}/page{{ paginator.previous_page }}{% endif %}">Future &rarr;</a>
+        </div>
+      {% endif %}
+    </nav>
+
+  </section>
+
+</body>
+</html>
+
+
