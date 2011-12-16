@@ -1,5 +1,5 @@
 module Jekyll
-  
+
   class GeneratePhotoDump < Generator
 
     safe true
@@ -11,16 +11,16 @@ module Jekyll
         site.posts << photo
       end
     end
-    
+
     def write_photo(file, site)
       photo = Photo.new(site, site.source, File.dirname(file), File.basename(file))
       photo.render(site.layouts, site.site_payload)
       photo.write(site.dest)
       photo
     end
-    
+
   end
-  
+
   class Photo < Post
 
     MATCHER = /^(.+\/)*(\d+-\d+-\d+)-(.*)(\.[^.]+)$/
